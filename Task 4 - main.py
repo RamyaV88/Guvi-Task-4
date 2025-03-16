@@ -52,4 +52,33 @@ list1.sort()
 
 print("The minimum element of the sorted list is:", list1[0])
 
+# 9. Program to find the triplet in list whose sum is equal to 59
 
+from itertools import combinations
+
+def findTriplets(num_list, key):
+
+    def valid(val):
+        return sum(val) == key
+
+    return list(filter(valid, list(combinations(num_list, 3))))
+
+num_list = [10,20,30,9]
+print(findTriplets(num_list, 59))
+
+# 10. Program to find if there is a sublist with sum equal to zero
+def subArrayExists(arr, n):
+    n_sum = 0
+    s = set()
+    for i in range(n):
+        n_sum += arr[i]
+        if n_sum == 0 or n_sum in s:
+            return True
+        s.add(n_sum)
+    return False
+arr = [4, 2, -3, 1, 6]
+n = len(arr)
+if subArrayExists(arr, n) == True:
+    print("Found a subarray with sum as 0")
+else:
+    print("No such sub array exits!")
